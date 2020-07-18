@@ -30,3 +30,14 @@
 *.exe
 *.out
 *.app
+
+CMakeLists.txt.user
+
+CMakeCache.txt
+CMakeFiles/
+app
+app_autogen/
+cmake_install.cmake
+
+
+
