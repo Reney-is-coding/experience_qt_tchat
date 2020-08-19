@@ -1,5 +1,5 @@
-import QtQuick 2.11
-import QtQuick.Controls 2.4
+import QtQuick 2.2
+import QtQuick.Controls 2.2
 
 ApplicationWindow {
     id: a
@@ -10,8 +10,8 @@ ApplicationWindow {
     Column {
         anchors.fill: parent
         spacing: 10
-        topPadding: 5
-        leftPadding: 15
+        y: 5
+        x: 15
 
         Row {
             width: parent.width - parent.leftPadding
@@ -32,7 +32,7 @@ ApplicationWindow {
                     TextArea {
                         focus:  Qt.NoFocus
                         readOnly: true
-                        text: "TextArea\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n"
+                        text: connector.messages
                     }
                 }
             }
@@ -68,10 +68,26 @@ ApplicationWindow {
             border.width: 1
 
             TextInput {
-                anchors.fill: parent
-                text: qsTr("aaa")
+                id : input
+                width: parent.width * 0.9
+                height: parent.height
+                text: qsTr("")
                 focus: Qt.StrongFocus
             }
+
+            Button {
+                text: "Send"
+                width: parent.width * 0.1
+                height: parent.height
+                anchors.left: input.right
+                anchors.leftMargin: 5
+
+                onClicked: {
+                    connector.sendDatagram(input.text)
+                }
+
+            }
         }
+
     }
 }

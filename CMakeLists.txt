@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 3.10)
 
 add_executable(app
     src/main.cpp
+    src/Connector.cpp
+    include/Connector.h
     qml.qrc
 )
 
@@ -24,7 +26,7 @@ target_compile_features(
 #add_dependencies(app plugin)
 # Needs to copy plugin files...
 
-find_package(Qt5 COMPONENTS Core Qml Quick Widgets REQUIRED)
+find_package(Qt5 COMPONENTS Core Qml Quick Widgets QuickControls2 REQUIRED)
 
 #qt5_use_package(app Widgets)
 #qt5_use_package(app Core)
@@ -32,4 +34,4 @@ find_package(Qt5 COMPONENTS Core Qml Quick Widgets REQUIRED)
 #qt5_use_package(app Quick)
 
 
-target_link_libraries(app Qt5::Core Qt5::Qml Qt5::Quick Qt5::Widgets)
+target_link_libraries(app Qt5::Core Qt5::Qml Qt5::Quick Qt5::QuickControls2 Qt5::Widgets)
